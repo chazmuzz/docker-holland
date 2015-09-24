@@ -11,5 +11,3 @@ VOLUME /etc/holland
 VOLUME /var/spool/holland
 
 VOLUME /var/log
-
-CMD crond -f
