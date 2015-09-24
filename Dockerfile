@@ -9,3 +9,7 @@ RUN mkdir /etc/cron.d && echo "0 3 * * * /usr/sbin/holland -q bk" > /etc/cron.d/
 VOLUME /etc/holland
 
 VOLUME /var/spool/holland
+
+VOLUME /var/log
+
+CMD crond -f
