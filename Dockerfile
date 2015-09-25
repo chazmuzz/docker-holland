@@ -4,8 +4,7 @@ RUN curl http://download.opensuse.org/repositories/home:/holland-backup/CentOS_7
 
 RUN yum -y update && yum install -y holland holland-mysqldump mariadb cronie
 
-RUN mkdir /var/spool/cron && \
-	echo "0 3 * * * /usr/sbin/holland backup >> /var/log/holland.log" > /var/spool/cron/root
+RUN echo "0 3 * * * /usr/sbin/holland backup >> /var/log/holland.log" > /var/spool/cron/root
 
 VOLUME /etc/holland
 
