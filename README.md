@@ -1,5 +1,5 @@
 # docker-holland
-Docker image for hollandbackup.org
+Docker image for http://hollandbackup.org
 
 Uses cron to run a holland backup daily at 3am
 
