@@ -6,6 +6,8 @@ RUN yum -y update && yum install -y holland holland-mysqldump mariadb
 
 ADD ./entrypoint.sh /entrypoint.sh
 
+RUN cp -r /etc/holland /etc/holland.orig
+
 VOLUME /etc/holland
 
 VOLUME /var/spool/holland

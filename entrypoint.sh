@@ -14,9 +14,28 @@ function sleep_until {
 	sleep $seconds
 }
 
+## Install the default config if none was provided
+if [ ! -e /etc/holland/holland.conf ]; then
+	echo 'Creating default holland.conf'
+	cp /etc/holland.orig/holland.conf /etc/holland/holland.conf
+
+	# Change the default config to log to stdout rather than a log file
+	sed -i 's/\/var\/log\/holland\/holland\.log/\/dev\/stdout/g' /etc/holland/holland.conf
+fi
+
+if [ ! -d /etc/holland/backupsets ]; then
+	echo 'Creating default backupsets'
+	cp -r /etc/holland.orig/backupsets /etc/holland/backupsets
+fi
+
+if [ ! -d /etc/holland/providers ]; then
+	echo 'Creating default providers'
+	cp -r /etc/holland.orig/providers /etc/holland/providers
+fi
+
+## Loop forever but sleep until 3am
 while [[ true ]]; do
 	echo '--------------------------------------------------------------------------------'
-	date
 	/usr/sbin/holland backup
 	sleep_until 'tomorrow 3:00'
 	echo '--------------------------------------------------------------------------------'

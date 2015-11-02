@@ -1,8 +1,8 @@
-# docker-holland
+# Docker Holland
+
 Docker image for http://hollandbackup.org
 
-Uses cron to run a holland backup daily at 3am
-
+Runs a holland backup at 3am daily. Does not use cron, instead just uses a bash script to sleep until 3am the next day.
 
 ```
 docker run -d \
